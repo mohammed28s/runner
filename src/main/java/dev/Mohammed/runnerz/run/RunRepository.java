@@ -26,7 +26,7 @@ public class RunRepository {
                 LocalDateTime.now().plusMinutes(30), 3, Location.INSIDE));
 
 
-        runs.add(new Run(1,
+        runs.add(new Run(2,
                 "Wednesday Evening Run",
                 LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(30), 6, Location.OUTDOOR));
