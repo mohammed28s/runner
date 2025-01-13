@@ -2,10 +2,12 @@ package dev.Mohammed.runnerz.run;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RunRepository {
@@ -17,8 +19,29 @@ public class RunRepository {
         return runs;
     }
 
+
+
+    Optional<Run> findById(Integer id){
+
+        return runs.stream()
+                .filter(run -> run.id() == id)
+                .findFirst();
+    }
+
+
+
+    void create(Run run){  //This is for adding new elements to the runs array list
+        runs.add(run);
+    }
+
+    void update(Run run){
+
+        runs.get(run.id());
+    }
+
+
     @PostConstruct
-    private void init(){
+    private void init(){  //This all the information in the runs array
 
         runs.add(new Run(1,
                 "Monday Morning Run",
@@ -30,6 +53,19 @@ public class RunRepository {
                 "Wednesday Evening Run",
                 LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(30), 6, Location.OUTDOOR));
+
+
+        runs.add(new Run(3,
+                "Friday Muscat Night",
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(55), 10, Location.SUBWAY));
+
+        runs.add(new Run(4,
+                "Tuesday Muscat Night",
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(25), 31, Location.COMPLEX));
+
+
 
     }
 

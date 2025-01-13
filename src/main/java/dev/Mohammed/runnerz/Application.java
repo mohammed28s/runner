@@ -16,7 +16,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 
 @SpringBootApplication
-public class Application {  //This is a runner project
+public class Application {  //This is a runner project by "DanVega"
 
 	private static final Logger log = getLogger(Application.class);
 
