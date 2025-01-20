@@ -48,6 +48,18 @@ public class RunRepository {
     }
 
 
+    void delete( Integer id){
+        Optional<Run> existingRun = findById(id);
+        if(existingRun.isPresent()){
+            runs.remove(runs.indexOf(existingRun.get()));
+
+        }
+
+
+    }
+
+
+
     @PostConstruct
     private void init(){  //This all the information in the runs array
 

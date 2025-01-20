@@ -10,6 +10,7 @@ import java.util.Optional;
 
 //Using CRUD
 
+@ResponseStatus(HttpStatus.OK)
 @RestController
 @RequestMapping("/api/runs") //This is the main path to the runs API
 public class RunController {
@@ -23,14 +24,14 @@ public class RunController {
     }
 
 
-    
-    @GetMapping("/getAll")  // This is to get all the data in the database
+    @ResponseStatus(HttpStatus.FOUND)
+    @GetMapping("")  // This is to get all the data in the database
     List<Run> findAll(){
         return runRepository.findAll();
     }
 
 
-    @GetMapping("/getId/{id}")  // This is to get the data by id
+    @GetMapping("/{id}")  // This is to get the data by id
     Run findId(@PathVariable Integer id){
         Optional<Run> run = runRepository.findById(id);
         if(run.isEmpty()){
@@ -44,28 +45,26 @@ public class RunController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create")  // This is to create new run information
+    @PostMapping("")  // This is to create new run information
     void create(@RequestBody Run run){
         runRepository.create(run);
     }
 
 
-    // put
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/updateId/{id}") // This is to update the existing data
+    @PutMapping("/{id}") // This is to update the existing data
     void update(@RequestBody Run run, @PathVariable Integer id){
         runRepository.update(run, id);
 
     }
 
 
-    // delete
-    @DeleteMapping("/deleteId/{id}")  //This is to delete the data
-    void delete(){
-
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")  //This is to delete the data
+    void delete( @PathVariable Integer id){
+        runRepository.delete(id);
 
     }
-
 
 
 }
