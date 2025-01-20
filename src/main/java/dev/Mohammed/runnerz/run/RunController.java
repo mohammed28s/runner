@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
+
 //Using CRUD
 
 @RestController
@@ -42,24 +43,26 @@ public class RunController {
 
 
 
-    // post
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")  // This is to create new run information
     void create(@RequestBody Run run){
         runRepository.create(run);
     }
 
-    // put
-    @PutMapping("/update") // This is to update the data
-    void update(@RequestBody Run run){
 
+    // put
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/updateId/{id}") // This is to update the existing data
+    void update(@RequestBody Run run, @PathVariable Integer id){
+        runRepository.update(run, id);
 
     }
 
 
-
     // delete
-    @DeleteMapping("/delete")  //This is to delete the data
+    @DeleteMapping("/deleteId/{id}")  //This is to delete the data
     void delete(){
+
 
     }
 

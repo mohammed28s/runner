@@ -2,7 +2,6 @@ package dev.Mohammed.runnerz.run;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,14 +13,14 @@ public class RunRepository {
 
     private final List<Run> runs = new ArrayList<>();
 
-    List<Run> findAll() {
+    List<Run> findAll() {  //This is to get all data
 
         return runs;
     }
 
 
 
-    Optional<Run> findById(Integer id){
+    Optional<Run> findById(Integer id){   //This is to get data by id
 
         return runs.stream()
                 .filter(run -> run.id() == id)
@@ -37,6 +36,15 @@ public class RunRepository {
     void update(Run run){
 
         runs.get(run.id());
+    }
+
+
+    void update(Run run, Integer id){   //This is to update the data
+        Optional<Run> existingRun = findById(id);
+        if(existingRun.isPresent()){
+            runs.set(runs.indexOf(existingRun.get()), run);
+
+        }
     }
 
 
