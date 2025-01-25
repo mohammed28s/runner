@@ -14,14 +14,18 @@ public class RunRepository {
 
     private final List<Run> runs = new ArrayList<>();
 
-    List<Run> findAll() {
+    List<Run> findAll() {  //This is to get all data
 
         return runs;
     }
 
 
 
+<<<<<<< HEAD
     Optional<Run> findById(Integer id){
+=======
+    Optional<Run> findById(Integer id){   //This is to get data by id
+>>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
 
         return runs.stream()
                 .filter(run -> run.id() == id)
@@ -40,6 +44,30 @@ public class RunRepository {
     }
 
 
+<<<<<<< HEAD
+=======
+    void update(Run run, Integer id){   //This is to update the data
+        Optional<Run> existingRun = findById(id);
+        if(existingRun.isPresent()){
+            runs.set(runs.indexOf(existingRun.get()), run);
+
+        }
+    }
+
+
+    void delete( Integer id){
+        Optional<Run> existingRun = findById(id);
+        if(existingRun.isPresent()){
+            runs.remove(runs.indexOf(existingRun.get()));
+
+        }
+
+
+    }
+
+
+
+>>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
     @PostConstruct
     private void init(){  //This all the information in the runs array
 
