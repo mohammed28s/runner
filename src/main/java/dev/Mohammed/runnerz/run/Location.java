@@ -2,5 +2,5 @@ package dev.Mohammed.runnerz.run;
 
 public enum Location {
 
-    INSIDE, OUTDOOR
+    INSIDE, OUTDOOR, SUBWAY, COMPLEX
 }
