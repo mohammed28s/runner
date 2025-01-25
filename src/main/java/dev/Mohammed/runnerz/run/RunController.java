@@ -6,11 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
-<<<<<<< HEAD
-
-//Using CRUD
-=======
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
 
 
 //Using CRUD
@@ -29,11 +24,7 @@ public class RunController {
     }
 
 
-<<<<<<< HEAD
-
-=======
     @ResponseStatus(HttpStatus.FOUND)
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
     @GetMapping("")  // This is to get all the data in the database
     List<Run> findAll(){
         return runRepository.findAll();
@@ -45,11 +36,7 @@ public class RunController {
         Optional<Run> run = runRepository.findById(id);
         if(run.isEmpty()){
 
-<<<<<<< HEAD
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-=======
             throw new RunNotFoundException();
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
         }
 
         return run.get();
@@ -57,25 +44,12 @@ public class RunController {
 
 
 
-<<<<<<< HEAD
-    // post
-=======
     @ResponseStatus(HttpStatus.CREATED)
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
     @PostMapping("")  // This is to create new run information
     void create(@RequestBody Run run){
         runRepository.create(run);
     }
 
-<<<<<<< HEAD
-    // put
-
-
-
-
-    // delete
-
-=======
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}") // This is to update the existing data
@@ -89,13 +63,8 @@ public class RunController {
     @DeleteMapping("/{id}")  //This is to delete the data
     void delete( @PathVariable Integer id){
         runRepository.delete(id);
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
 
     }
 
 
-<<<<<<< HEAD
-
-=======
 }
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38

@@ -3,7 +3,6 @@ package dev.Mohammed.runnerz.run;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +20,7 @@ public class RunRepository {
 
 
 
-<<<<<<< HEAD
-    Optional<Run> findById(Integer id){
-=======
     Optional<Run> findById(Integer id){   //This is to get data by id
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
 
         return runs.stream()
                 .filter(run -> run.id() == id)
@@ -44,8 +39,6 @@ public class RunRepository {
     }
 
 
-<<<<<<< HEAD
-=======
     void update(Run run, Integer id){   //This is to update the data
         Optional<Run> existingRun = findById(id);
         if(existingRun.isPresent()){
@@ -67,7 +60,6 @@ public class RunRepository {
 
 
 
->>>>>>> 52272ae8e040124090dcd82a9e5a0c3b7d060e38
     @PostConstruct
     private void init(){  //This all the information in the runs array
 
