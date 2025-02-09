@@ -1,9 +1,9 @@
 package dev.Mohammed.runnerz.run;
 
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +24,7 @@ public class RunController {
     }
 
 
+    // fetch all data
     @ResponseStatus(HttpStatus.FOUND)
     @GetMapping("")  // This is to get all the data in the database
     List<Run> findAll(){
@@ -31,6 +32,7 @@ public class RunController {
     }
 
 
+    // find by id
     @GetMapping("/{id}")  // This is to get the data by id
     Run findId(@PathVariable Integer id){
         Optional<Run> run = runRepository.findById(id);
@@ -44,21 +46,23 @@ public class RunController {
 
 
 
+    // Create
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")  // This is to create new run information
-    void create(@RequestBody Run run){
+    void create(@Valid @RequestBody Run run){
         runRepository.create(run);
     }
 
 
+    // Update
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}") // This is to update the existing data
-    void update(@RequestBody Run run, @PathVariable Integer id){
+    void update(@Valid @RequestBody Run run, @PathVariable Integer id){
         runRepository.update(run, id);
 
     }
 
-
+    // Delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")  //This is to delete the data
     void delete( @PathVariable Integer id){
